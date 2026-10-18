@@ -79,7 +79,7 @@ button, select { font: inherit; }
 .digest { border-left: 1px solid var(--line); padding-left: 24px; min-width: 0; }
 .digest h3 { font-family: var(--font-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); margin: 0 0 14px; font-weight: 500; }
 .digest ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-.digest li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.4; }
+.digest li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; font-size: 16px; line-height: 1.4; }
 .digest time { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); padding-top: 2px; }
 
 .econ { padding-block: 8px 36px; }
@@ -243,6 +243,7 @@ footer p { margin: 0 0 12px; }
 
 <script>
 (function () {
+  var SHOW_DATES = false; // true: показывать дату события у каждой новости и в сводке
   var ICONS = {'Политика': 'politika', 'Безопасность': 'bezopasnost', 'Экономика': 'ekonomika', 'Общество': 'obschestvo', 'Регион': 'region', 'Спорт': 'sport', 'Культура': 'kultura'};
   var CATEGORY_ORDER = ['Политика', 'Безопасность', 'Экономика', 'Общество', 'Регион', 'Спорт', 'Культура'];
   var state = { cat: 'all', day: 'all' };
@@ -280,7 +281,7 @@ footer p { margin: 0 0 12px; }
     var ol = el('ol');
     (digest || []).forEach(function (d) {
       var li = el('li');
-      li.appendChild(el('time', null, d.date));
+      if (SHOW_DATES) li.appendChild(el('time', null, d.date));
       li.appendChild(el('span', null, d.text));
       ol.appendChild(li);
     });
@@ -320,7 +321,7 @@ footer p { margin: 0 0 12px; }
       use.setAttribute('href', '#ic-' + (ICONS[s.category] || 'politika'));
       pic.appendChild(use);
       meta.appendChild(pic);
-      meta.appendChild(el('span', null, s.date));
+      if (SHOW_DATES) meta.appendChild(el('span', null, s.date));
       meta.appendChild(el('span', 'tag', s.category));
       li.appendChild(meta);
       var box = el('div');
