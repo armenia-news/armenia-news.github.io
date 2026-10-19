@@ -55,6 +55,16 @@ a { color: inherit; }
 button, select { font: inherit; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .wrap { max-width: 1120px; margin-inline: auto; }
+/* Армянский орнамент по краям страницы (розетки как на коврах) */
+body::before, body::after { content: ""; position: fixed; top: 0; bottom: 0; width: 12px; background: var(--accent); opacity: .75; pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 24'%3E%3Cpath d='M6 1 L11 8 L6 15 L1 8 Z M6 17 L8 20 L6 23 L4 20 Z'/%3E%3C/svg%3E") repeat-y center top / 12px 24px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 24'%3E%3Cpath d='M6 1 L11 8 L6 15 L1 8 Z M6 17 L8 20 L6 23 L4 20 Z'/%3E%3C/svg%3E") repeat-y center top / 12px 24px; }
+body::before { left: 2px; }
+body::after { right: 2px; }
+@media (min-width: 1280px) {
+  body::before, body::after { width: 56px; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 112'%3E%3Crect x='3' width='2' height='112'/%3E%3Crect x='51' width='2' height='112'/%3E%3Cg fill='none' stroke='black' stroke-width='2'%3E%3Crect x='15' y='43' width='26' height='26'/%3E%3Crect x='15' y='43' width='26' height='26' transform='rotate%2845 28 56%29'/%3E%3Ccircle cx='28' cy='56' r='13'/%3E%3C/g%3E%3Ccircle cx='28' cy='56' r='4'/%3E%3Cpath d='M28 4 L34 14 L28 24 L22 14 Z M28 88 L34 98 L28 108 L22 98 Z'/%3E%3Cpath d='M14 10 h4 v4 h-4z M38 10 h4 v4 h-4z M14 98 h4 v4 h-4z M38 98 h4 v4 h-4z'/%3E%3C/svg%3E") repeat-y center top / 56px 112px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 112'%3E%3Crect x='3' width='2' height='112'/%3E%3Crect x='51' width='2' height='112'/%3E%3Cg fill='none' stroke='black' stroke-width='2'%3E%3Crect x='15' y='43' width='26' height='26'/%3E%3Crect x='15' y='43' width='26' height='26' transform='rotate%2845 28 56%29'/%3E%3Ccircle cx='28' cy='56' r='13'/%3E%3C/g%3E%3Ccircle cx='28' cy='56' r='4'/%3E%3Cpath d='M28 4 L34 14 L28 24 L22 14 Z M28 88 L34 98 L28 108 L22 98 Z'/%3E%3Cpath d='M14 10 h4 v4 h-4z M38 10 h4 v4 h-4z M14 98 h4 v4 h-4z M38 98 h4 v4 h-4z'/%3E%3C/svg%3E") repeat-y center top / 56px 112px; }
+  body::before { left: 12px; }
+  body::after { right: 12px; }
+}
 
 .masthead { padding-block: 28px 14px; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 8px 24px; }
 .arm { font-family: var(--font-arm); font-weight: 600; font-size: 15px; letter-spacing: .06em; color: var(--accent); margin: 0; }
